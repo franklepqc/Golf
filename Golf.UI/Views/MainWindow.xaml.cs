@@ -1,7 +1,4 @@
-﻿using Golf.Biz;
-using Golf.UI.ViewModels;
-
-namespace Golf.UI
+﻿namespace Golf.UI.Views
 {
     /// <summary>
     /// Logique d'interaction pour MainWindow.xaml
@@ -11,9 +8,6 @@ namespace Golf.UI
         public MainWindow()
         {
             InitializeComponent();
-
-            DataContext = new MainWindowViewModel(
-                new CalculScoreFinal());
         }
     }
 }

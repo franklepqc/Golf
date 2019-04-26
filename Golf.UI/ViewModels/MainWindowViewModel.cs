@@ -1,13 +1,15 @@
 ﻿using Golf.Biz.Interfaces;
 using Golf.UI.Models;
+using Prism.Commands;
+using Prism.Mvvm;
+using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
 
 namespace Golf.UI.ViewModels
 {
-    public class MainWindowViewModel
+    public class MainWindowViewModel : BindableBase
     {
         #region Fields
 
@@ -15,6 +17,11 @@ namespace Golf.UI.ViewModels
         /// Service de calcul.
         /// </summary>
         private readonly ICalculScoreFinal _serviceCalcul;
+
+        /// <summary>
+        /// Conteneurs.
+        /// </summary>
+        private sbyte? _resultat;
 
         #endregion Fields
 
@@ -29,14 +36,13 @@ namespace Golf.UI.ViewModels
             // Injection.
             _serviceCalcul = serviceCalcul;
 
-            // Initialisation des pars.
-            Pars = new byte[9];
-
             // Initialisation des essais.
-            EssaisJoueur = new List<Coup>(new Coup[9]);
+            Trous = (new Trou[9])
+                .Select((coup, index) => new Trou(Convert.ToByte(index + 1), Convert.ToByte(0)))
+                .ToList();
 
             // Initialisation de la commande.
-            //CommandeCalculer = new DelegateCommand(() => Calculer);
+            CommandeCalculer = new DelegateCommand(Calculer);
         }
 
         #endregion Constructors
@@ -44,20 +50,18 @@ namespace Golf.UI.ViewModels
         #region Properties
 
         /// <summary>
-        /// Essais du joueur.
+        /// Trous.
         /// </summary>
-        public IEnumerable<Coup> EssaisJoueur { get; }
-
-        /// <summary>
-        /// Le par de la partie.
-        /// À initialiser au début.
-        /// </summary>
-        public IEnumerable<byte> Pars { get; }
+        public IEnumerable<Trou> Trous { get; }
 
         /// <summary>
         /// Résultat de la partie.
         /// </summary>
-        public sbyte? Resultat { get; private set; }
+        public sbyte? Resultat
+        {
+            get => _resultat;
+            set => SetProperty(ref _resultat, value);
+        }
 
         /// <summary>
         /// Commande pour le calcul.
@@ -74,8 +78,8 @@ namespace Golf.UI.ViewModels
         private void Calculer()
         {
             Resultat = _serviceCalcul.Calculer(
-                Pars.ToArray(),
-                EssaisJoueur.Where(p => p.Valeur.HasValue).Select(p => p.Valeur.Value).ToArray());
+                Trous.Select(trou => trou.Par).ToArray(),
+                Trous.Where(trou => trou.NombreCoupsJoueur.HasValue).Select(trou => trou.NombreCoupsJoueur.Value).ToArray());
         }
 
         #endregion Methods
