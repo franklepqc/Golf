@@ -47,6 +47,7 @@
                          VerticalContentAlignment="Center"
                          HorizontalContentAlignment="Center"
                          FontSize="52"
+                         Text="{Binding Path=NombreCoupsJoueur}"
                          Background="Transparent" />
             </GroupBox>
         </Grid>
