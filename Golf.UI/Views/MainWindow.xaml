@@ -9,39 +9,54 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
-            <RowDefinition />
             <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
 
-        <GroupBox Grid.Row="0" Header="Partie du joueur">
-            <ListBox ItemsSource="{Binding Path=EssaisJoueur, Mode=OneWay}">
-                <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Orientation="Horizontal" />
-                    </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <controles:TrouEcriture />
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-        </GroupBox>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="100" />
+            </Grid.ColumnDefinitions>
 
-        <GroupBox Grid.Row="1" Header="Pars">
-            <ListBox ItemsSource="{Binding Path=Pars, Mode=OneWay}">
-                <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Orientation="Horizontal" />
-                    </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <controles:TrouLecture />
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-        </GroupBox>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                
+                <GroupBox Grid.Row="0" Header="Partie du joueur">
+                    <ListBox ItemsSource="{Binding Path=EssaisJoueur, Mode=OneWay}">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <controles:TrouEcriture />
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </GroupBox>
+
+                <GroupBox Grid.Row="1" Header="Pars">
+                    <ListBox ItemsSource="{Binding Path=Pars, Mode=OneWay}">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <controles:TrouLecture />
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </GroupBox>
+            </Grid>
+
+            <Button Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Command="{Binding Path=CommandeCalculer, Mode=OneWay}" Content="Calculer" />
+        </Grid>
 
         <GroupBox Grid.Row="2" Header="Résultat">
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center">

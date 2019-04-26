@@ -1,7 +1,9 @@
 ﻿using Golf.Biz.Interfaces;
+using Golf.UI.Models;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Input;
 
 namespace Golf.UI.ViewModels
 {
@@ -31,10 +33,10 @@ namespace Golf.UI.ViewModels
             Pars = new byte[9];
 
             // Initialisation des essais.
-            EssaisJoueur = new ObservableCollection<byte>(new byte[9]);
+            EssaisJoueur = new List<Coup>(new Coup[9]);
 
-            // Attribution du changement.
-            EssaisJoueur.CollectionChanged += SurChangementEssaisJoueur;
+            // Initialisation de la commande.
+            //CommandeCalculer = new DelegateCommand(() => Calculer);
         }
 
         #endregion Constructors
@@ -44,7 +46,7 @@ namespace Golf.UI.ViewModels
         /// <summary>
         /// Essais du joueur.
         /// </summary>
-        public ObservableCollection<byte> EssaisJoueur { get; }
+        public IEnumerable<Coup> EssaisJoueur { get; }
 
         /// <summary>
         /// Le par de la partie.
@@ -57,6 +59,11 @@ namespace Golf.UI.ViewModels
         /// </summary>
         public sbyte? Resultat { get; private set; }
 
+        /// <summary>
+        /// Commande pour le calcul.
+        /// </summary>
+        public ICommand CommandeCalculer { get; private set; }
+
         #endregion Properties
 
         #region Methods
@@ -68,17 +75,7 @@ namespace Golf.UI.ViewModels
         {
             Resultat = _serviceCalcul.Calculer(
                 Pars.ToArray(),
-                EssaisJoueur.ToArray());
-        }
-
-        /// <summary>
-        /// Sur changement d'un essai du joueur.
-        /// </summary>
-        /// <param name="sender">Objet applant la méthode.</param>
-        /// <param name="e">Argument.</param>
-        private void SurChangementEssaisJoueur(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-        {
-            Calculer();
+                EssaisJoueur.Where(p => p.Valeur.HasValue).Select(p => p.Valeur.Value).ToArray());
         }
 
         #endregion Methods
