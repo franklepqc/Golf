@@ -82,6 +82,7 @@
     <Compile Include="Views\FicheJeu.xaml.cs">
       <DependentUpon>FicheJeu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ScoreStandardGolf.cs" />
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

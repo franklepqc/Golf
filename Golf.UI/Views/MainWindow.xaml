@@ -30,7 +30,15 @@
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                 <TextBlock Text="Et votre résultat est..." FontSize="26" />
 
-                <TextBlock Text="{Binding Path=Resultat, Mode=OneWay}" FontSize="52" />
+                <TextBlock FontSize="52">
+                    <TextBlock.Text>
+                        <Binding Path="Resultat" Mode="OneWay">
+                            <Binding.Converter>
+                                <controles:ScoreStandardGolf />
+                            </Binding.Converter>
+                        </Binding>
+                    </TextBlock.Text>
+                </TextBlock>
 
                 <Button Grid.Column="1" Command="{Binding Path=CommandeCalculer, Mode=OneWay}" Content="Calculer" />
             </StackPanel>
