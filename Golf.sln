@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.202
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Golf.UI", "Golf.UI\Golf.UI.csproj", "{6F5BF2F3-F3B2-4D58-A2A0-942DF477022A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Golf.Biz.Tests", "Golf.Biz.Tests\Golf.Biz.Tests.csproj", "{4D6A669E-16E4-41A1-8C61-A9C5D6F78CED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Golf.Biz", "Golf.Biz\Golf.Biz.csproj", "{F8AECAD7-FAED-4A78-ADEE-306AD0210ABD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6F5BF2F3-F3B2-4D58-A2A0-942DF477022A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F5BF2F3-F3B2-4D58-A2A0-942DF477022A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F5BF2F3-F3B2-4D58-A2A0-942DF477022A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F5BF2F3-F3B2-4D58-A2A0-942DF477022A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D6A669E-16E4-41A1-8C61-A9C5D6F78CED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D6A669E-16E4-41A1-8C61-A9C5D6F78CED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D6A669E-16E4-41A1-8C61-A9C5D6F78CED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D6A669E-16E4-41A1-8C61-A9C5D6F78CED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8AECAD7-FAED-4A78-ADEE-306AD0210ABD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8AECAD7-FAED-4A78-ADEE-306AD0210ABD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8AECAD7-FAED-4A78-ADEE-306AD0210ABD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8AECAD7-FAED-4A78-ADEE-306AD0210ABD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D3839CEF-DB84-4336-AB04-2EDF21F1E2B0}
+	EndGlobalSection
+EndGlobal
