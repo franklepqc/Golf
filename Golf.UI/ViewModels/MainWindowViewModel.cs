@@ -37,8 +37,9 @@ namespace Golf.UI.ViewModels
             _serviceCalcul = serviceCalcul;
 
             // Initialisation des essais.
+            var hasard = new Random();
             Trous = (new Trou[9])
-                .Select((coup, index) => new Trou(Convert.ToByte(index + 1), Convert.ToByte(0)))
+                .Select((coup, index) => new Trou(Convert.ToByte(index + 1), Convert.ToByte(hasard.Next(2, 6))))
                 .ToList();
 
             // Initialisation de la commande.

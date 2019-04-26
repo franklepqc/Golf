@@ -79,8 +79,8 @@
     </ApplicationDefinition>
     <Compile Include="Models\TrouGolf.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
-    <Compile Include="Views\TrouLecture.xaml.cs">
-      <DependentUpon>TrouLecture.xaml</DependentUpon>
+    <Compile Include="Views\FicheJeu.xaml.cs">
+      <DependentUpon>FicheJeu.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -94,7 +94,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\TrouLecture.xaml">
+    <Page Include="Views\FicheJeu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -132,6 +132,8 @@
       <Name>Golf.Biz</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Views\fond.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

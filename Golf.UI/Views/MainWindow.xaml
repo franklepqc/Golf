@@ -12,15 +12,15 @@
         </Grid.ColumnDefinitions>
 
         <GroupBox Header="Fiches de jeu" Grid.Column="0">
-            <ListBox ItemsSource="{Binding Path=Trous, Mode=OneWay}">
+            <ListBox ItemsSource="{Binding Path=Trous, Mode=OneWay}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Orientation="Horizontal" />
+                        <WrapPanel VerticalAlignment="Stretch" Orientation="Horizontal" />
                     </ItemsPanelTemplate>
                 </ListBox.ItemsPanel>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <controles:TrouLecture />
+                        <controles:FicheJeu />
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
