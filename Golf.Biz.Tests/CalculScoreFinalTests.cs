@@ -164,5 +164,107 @@ namespace Golf.Biz.Tests
             // Assert.
             Assert.AreEqual(attendu, actuel);
         }
+
+        /// <summary>
+        /// Parcours neuf trou parfait. Tous les coups sont sur la normale.
+        /// </summary>
+        [TestCategory("Service de calcul du score final")]
+        [TestMethod]
+        public void AucunCoupsJoueur_Succes()
+        {
+            // Variables de travail.
+            byte[] coupsJoueur = new byte[0];
+
+            // Attendu.
+            sbyte attendu = 0;
+
+            // Actuel.
+            var actuel = _serviceCalculScoreFinal.Calculer(PARS_PARCOURS_9, coupsJoueur);
+
+            // Assert.
+            Assert.AreEqual(attendu, actuel);
+        }
+
+        /// <summary>
+        /// Parcours neuf trou parfait. Tous les coups sont sur la normale.
+        /// </summary>
+        [TestCategory("Service de calcul du score final")]
+        [TestMethod]
+        public void AucunPars_Succes()
+        {
+            // Variables de travail.
+            byte[] coupsJoueur = new byte[]
+            {
+                5,
+                3,
+                3,
+                6,
+                4,
+                4,
+                2,
+                4,
+                2
+            };
+
+            // Attendu.
+            sbyte attendu = 0;
+
+            // Actuel.
+            var actuel = _serviceCalculScoreFinal.Calculer(new byte[0], coupsJoueur);
+
+            // Assert.
+            Assert.AreEqual(attendu, actuel);
+        }
+
+        /// <summary>
+        /// Parcours neuf trou parfait. Tous les coups sont sur la normale.
+        /// </summary>
+        [TestCategory("Service de calcul du score final")]
+        [TestMethod]
+        public void NullCoupsJoueur_Succes()
+        {
+            // Variables de travail.
+            byte[] coupsJoueur = null;
+
+            // Attendu.
+            sbyte attendu = 0;
+
+            // Actuel.
+            var actuel = _serviceCalculScoreFinal.Calculer(PARS_PARCOURS_9, coupsJoueur);
+
+            // Assert.
+            Assert.AreEqual(attendu, actuel);
+        }
+
+        /// <summary>
+        /// Parcours neuf trou parfait. Tous les coups sont sur la normale.
+        /// </summary>
+        [TestCategory("Service de calcul du score final")]
+        [TestMethod]
+        public void NullPars_Succes()
+        {
+            // Variables de travail.
+            byte[] coupsJoueur = new byte[]
+            {
+                5,
+                3,
+                3,
+                6,
+                4,
+                4,
+                2,
+                4,
+                2
+            };
+
+            // Attendu.
+            sbyte attendu = 0;
+
+            // Actuel.
+            var actuel = _serviceCalculScoreFinal.Calculer(null, coupsJoueur);
+
+            // Assert.
+            Assert.AreEqual(attendu, actuel);
+        }
     }
 }
