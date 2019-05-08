@@ -148,15 +148,15 @@ namespace Golf.Biz.Tests
                 3,
                 3,
                 6,
+                5,
                 4,
+                3,
                 4,
-                2,
-                4,
-                2
+                3
             };
 
             // Attendu.
-            sbyte attendu = 0;
+            sbyte attendu = 3;
 
             // Actuel.
             var actuel = _serviceCalculScoreFinal.Calculer(PARS_PARCOURS_9, coupsJoueur);
@@ -221,16 +221,37 @@ namespace Golf.Biz.Tests
         /// </summary>
         [TestCategory("Service de calcul du score final")]
         [TestMethod]
-        public void NullCoupsJoueur_Succes()
+        public void PartieAleatoire1HuitTrous_Succes()
         {
             // Variables de travail.
-            byte[] coupsJoueur = null;
+            byte[] coupsJoueur = new byte[]
+            {
+                5,
+                3,
+                3,
+                6,
+                4,
+                4,
+                2,
+                5
+            };
+            byte[] pars = new byte[]
+            {
+                5,
+                3,
+                3,
+                6,
+                4,
+                4,
+                2,
+                4
+            };
 
             // Attendu.
             sbyte attendu = 0;
 
             // Actuel.
-            var actuel = _serviceCalculScoreFinal.Calculer(PARS_PARCOURS_9, coupsJoueur);
+            var actuel = _serviceCalculScoreFinal.Calculer(pars, coupsJoueur);
 
             // Assert.
             Assert.AreEqual(attendu, actuel);
