@@ -15,6 +15,7 @@ namespace Golf.Biz.Tests
         /// Détermine à l'avance les pars du parcours neuf trous.
         /// </summary>
         private static byte[] PARS_PARCOURS_9;
+        private static byte[] PARS_PARCOURS_18;
 
         /// <summary>
         /// Initialise les pars des parcours.
@@ -29,6 +30,29 @@ namespace Golf.Biz.Tests
             // 9 trous.
             PARS_PARCOURS_9 = new byte[]
             {
+                3,
+                4,
+                3,
+                5,
+                3,
+                3,
+                4,
+                5,
+                3
+            };
+
+            // 18 trous.
+            PARS_PARCOURS_18 = new byte[]
+            {
+                3,
+                4,
+                3,
+                5,
+                3,
+                3,
+                4,
+                5,
+                3,
                 3,
                 4,
                 3,
@@ -160,6 +184,46 @@ namespace Golf.Biz.Tests
 
             // Actuel.
             var actuel = _serviceCalculScoreFinal.Calculer(PARS_PARCOURS_9, coupsJoueur);
+
+            // Assert.
+            Assert.AreEqual(attendu, actuel);
+        }
+
+        /// <summary>
+        /// Parcours neuf trou parfait. Tous les coups sont sur la normale.
+        /// </summary>
+        [TestCategory("Service de calcul du score final")]
+        [TestMethod]
+        public void PartieAleatoire1DixHuitTrous_Succes()
+        {
+            // Variables de travail.
+            byte[] coupsJoueur = new byte[]
+            {
+                5,
+                3,
+                3,
+                6,
+                5,
+                4,
+                3,
+                4,
+                3,
+                5,
+                3,
+                3,
+                6,
+                5,
+                4,
+                3,
+                4,
+                3
+            };
+
+            // Attendu.
+            sbyte? attendu = 6;
+
+            // Actuel.
+            var actuel = _serviceCalculScoreFinal.Calculer(PARS_PARCOURS_18, coupsJoueur, TypePartieEnum.DixHuitTrous);
 
             // Assert.
             Assert.AreEqual(attendu, actuel);
