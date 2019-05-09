@@ -12,18 +12,30 @@
         </Grid.ColumnDefinitions>
 
         <GroupBox Header="Fiches de jeu" Grid.Column="0">
-            <ListBox ItemsSource="{Binding Path=Trous, Mode=OneWay}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel VerticalAlignment="Stretch" Orientation="Horizontal" />
-                    </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <controles:FicheJeu />
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Orientation="Horizontal">
+                    <RadioButton Content="9 trous" IsChecked="{Binding Path=TypePartie9Trous}" />
+                    <RadioButton Content="18 trous" IsChecked="{Binding Path=TypePartie18Trous}" />
+                </StackPanel>
+
+                <ListBox Grid.Row="1" ItemsSource="{Binding Path=Trous, Mode=OneWay}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel VerticalAlignment="Stretch" Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <controles:FicheJeu />
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
         </GroupBox>
 
         <GroupBox Grid.Column="1" Header="Résultat">
