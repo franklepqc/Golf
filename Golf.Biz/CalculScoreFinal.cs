@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Linq;
 
 namespace Golf.Biz
 {
@@ -14,9 +16,20 @@ namespace Golf.Biz
         /// <param name="pars">Pars pour le parcours au complet.</param>
         /// <param name="coupsJoueur">Coups (essais) du joueur par trous.</param>
         /// <returns>Score normal.</returns>
-        public sbyte Calculer(byte[] pars, byte[] coupsJoueur)
+        public sbyte? Calculer(byte[] pars, byte[] coupsJoueur)
         {
-            return 0;
+            // Vérifications.
+            if (pars?.Length != 9 ||
+                coupsJoueur?.Length != 9)
+            {
+                Debug.WriteLine("Informations manquantes.");
+                return null;
+            }
+
+            // Calcul avec Linq.
+            return Convert.ToSByte((new byte[9])
+                .Select((nombre, index) => coupsJoueur[index] - pars[index])
+                .Sum());
         }
     }
 }

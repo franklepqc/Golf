@@ -2,6 +2,6 @@
 {
     public interface ICalculScoreFinal
     {
-        sbyte Calculer(byte[] pars, byte[] coupsJoueur);
+        sbyte? Calculer(byte[] pars, byte[] coupsJoueur);
     }
 }

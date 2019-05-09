@@ -63,7 +63,7 @@ namespace Golf.Biz.Tests
             };  // Tous les coups sont identiques.
 
             // Attendu.
-            sbyte attendu = 0;
+            sbyte? attendu = 0;
 
             // Actuel.
             var actuel = _serviceCalculScoreFinal.Calculer(PARS_PARCOURS_9, coupsJoueur);
@@ -94,7 +94,7 @@ namespace Golf.Biz.Tests
             };
 
             // Attendu.
-            sbyte attendu = 1;
+            sbyte? attendu = 1;
 
             // Actuel.
             var actuel = _serviceCalculScoreFinal.Calculer(PARS_PARCOURS_9, coupsJoueur);
@@ -125,7 +125,7 @@ namespace Golf.Biz.Tests
             };
 
             // Attendu.
-            sbyte attendu = -1;
+            sbyte? attendu = -1;
 
             // Actuel.
             var actuel = _serviceCalculScoreFinal.Calculer(PARS_PARCOURS_9, coupsJoueur);
@@ -156,7 +156,7 @@ namespace Golf.Biz.Tests
             };
 
             // Attendu.
-            sbyte attendu = 3;
+            sbyte? attendu = 3;
 
             // Actuel.
             var actuel = _serviceCalculScoreFinal.Calculer(PARS_PARCOURS_9, coupsJoueur);
@@ -176,7 +176,7 @@ namespace Golf.Biz.Tests
             byte[] coupsJoueur = new byte[0];
 
             // Attendu.
-            sbyte attendu = 0;
+            sbyte? attendu = null;
 
             // Actuel.
             var actuel = _serviceCalculScoreFinal.Calculer(PARS_PARCOURS_9, coupsJoueur);
@@ -207,7 +207,7 @@ namespace Golf.Biz.Tests
             };
 
             // Attendu.
-            sbyte attendu = 0;
+            sbyte? attendu = null;
 
             // Actuel.
             var actuel = _serviceCalculScoreFinal.Calculer(new byte[0], coupsJoueur);
@@ -248,7 +248,7 @@ namespace Golf.Biz.Tests
             };
 
             // Attendu.
-            sbyte attendu = 0;
+            sbyte? attendu = null;
 
             // Actuel.
             var actuel = _serviceCalculScoreFinal.Calculer(pars, coupsJoueur);
@@ -279,7 +279,7 @@ namespace Golf.Biz.Tests
             };
 
             // Attendu.
-            sbyte attendu = 0;
+            sbyte? attendu = null;
 
             // Actuel.
             var actuel = _serviceCalculScoreFinal.Calculer(null, coupsJoueur);
