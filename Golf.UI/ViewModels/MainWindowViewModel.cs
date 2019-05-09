@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Golf.UI.ViewModels
@@ -120,16 +121,45 @@ namespace Golf.UI.ViewModels
         /// </summary>
         private void GenererTrous()
         {
-            // Vider la liste précédente.
-            Trous.Clear();
+            // Réponse de la question.
+            MessageBoxResult reponse = MessageBoxResult.Yes;
 
-            // Initialisation des essais.
-            var hasard = new Random();
-            (new Trou[(int)TypePartie])
-                .Select((coup, index) => new Trou(Convert.ToByte(index + 1), Convert.ToByte(hasard.Next(2, 6))))
-                .ToList()
-                .ForEach((unTrou) => Trous.Add(unTrou));
+            // Si des valeurs actives s'y trouvent.
+            if (Trous.Any())
+            {
+                reponse = MessageBox.Show("ATTENTION! Toute donnée entrée sera perdue! Voulez-vous poursuivre?", "Changement de partie", MessageBoxButton.YesNo, MessageBoxImage.Stop);
+            }
 
+            if (reponse == MessageBoxResult.Yes)
+            {
+                // Vider la liste précédente.
+                Trous.Clear();
+
+                // Initialisation des essais.
+                var hasard = new Random();
+                (new Trou[(int)TypePartie])
+                    .Select((coup, index) => new Trou(Convert.ToByte(index + 1), Convert.ToByte(hasard.Next(2, 6))))
+                    .ToList()
+                    .ForEach((unTrou) => Trous.Add(unTrou));
+            }
+            else
+            {
+                // Remise de l'état initial.
+                if (TypePartie == TypePartieEnum.NeufTrous)
+                {
+                    _typePartie = TypePartieEnum.DixHuitTrous;
+                }
+                else if(TypePartie == TypePartieEnum.DixHuitTrous)
+                {
+                    _typePartie = TypePartieEnum.NeufTrous;
+                }
+
+                // Boutons radio.
+                _typePartie9Trous = _typePartie == TypePartieEnum.NeufTrous;
+                _typePartie18Trous = _typePartie == TypePartieEnum.DixHuitTrous;
+                RaisePropertyChanged(nameof(TypePartie9Trous));
+                RaisePropertyChanged(nameof(TypePartie18Trous));
+            }
         }
 
         #endregion Methods
