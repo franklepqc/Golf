@@ -41,10 +41,11 @@ namespace Golf.UI.ViewModels
         /// Constructeur par défaut.
         /// </summary>
         /// <param name="serviceCalcul">Service de calcul.</param>
-        public MainWindowViewModel(ICalculScoreFinal serviceCalcul)
+        public MainWindowViewModel(ICalculScoreFinal serviceCalcul, IRepoParties repoParties)
         {
             // Injection.
             _serviceCalcul = serviceCalcul;
+            _repoParties = repoParties;
 
             // Initialisation des commandes.
             CommandeCalculer = new DelegateCommand(Calculer);
@@ -188,11 +189,10 @@ namespace Golf.UI.ViewModels
         /// <summary>
         /// Effectue la sauvegarde.
         /// </summary>
-        //private void Sauvegarder() => _repoParties.Sauvegarder(
-        //    Trous.Where(trou => trou.NombreCoupsJoueur.HasValue).Select(trou => trou.NombreCoupsJoueur.Value).ToList(),
-        //    Trous.Select(trou => trou.Par).ToList(),
-        //    Resultat.Value);
-        private void Sauvegarder() { }
+        private void Sauvegarder() => _repoParties.Sauvegarder(
+            Trous.Where(trou => trou.NombreCoupsJoueur.HasValue).Select(trou => trou.NombreCoupsJoueur.Value).ToList(),
+            Trous.Select(trou => trou.Par).ToList(),
+            Resultat.Value);
 
         #endregion Methods
     }

@@ -26,6 +26,7 @@ namespace Golf.UI
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.Register<ICalculScoreFinal, CalculScoreFinal>();
+            containerRegistry.Register<IRepoParties, RepoParties>();
         }
     }
 }
