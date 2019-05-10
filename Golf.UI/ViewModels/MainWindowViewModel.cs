@@ -21,6 +21,11 @@ namespace Golf.UI.ViewModels
         private readonly ICalculScoreFinal _serviceCalcul;
 
         /// <summary>
+        /// Repository des parties.
+        /// </summary>
+        private readonly IRepoParties _repoParties;
+
+        /// <summary>
         /// Conteneurs.
         /// </summary>
         private sbyte? _resultat;
@@ -41,8 +46,9 @@ namespace Golf.UI.ViewModels
             // Injection.
             _serviceCalcul = serviceCalcul;
 
-            // Initialisation de la commande.
+            // Initialisation des commandes.
             CommandeCalculer = new DelegateCommand(Calculer);
+            CommandeSauvegarder = new DelegateCommand(Sauvegarder, Peut_Sauvegarder);
         }
 
         #endregion Constructors
@@ -60,7 +66,11 @@ namespace Golf.UI.ViewModels
         public sbyte? Resultat
         {
             get => _resultat;
-            set => SetProperty(ref _resultat, value);
+            set
+            {
+                SetProperty(ref _resultat, value);
+                CommandeSauvegarder.RaiseCanExecuteChanged();
+            }
         }
 
         /// <summary>
@@ -101,6 +111,11 @@ namespace Golf.UI.ViewModels
         /// </summary>
         public ICommand CommandeCalculer { get; private set; }
 
+        /// <summary>
+        /// Commande pour la persistance.
+        /// </summary>
+        public DelegateCommandBase CommandeSauvegarder { get; private set; }
+
         #endregion Properties
 
         #region Methods
@@ -132,6 +147,9 @@ namespace Golf.UI.ViewModels
 
             if (reponse == MessageBoxResult.Yes)
             {
+                // Nettoyage du résultat.
+                Resultat = null;
+
                 // Vider la liste précédente.
                 Trous.Clear();
 
@@ -161,6 +179,20 @@ namespace Golf.UI.ViewModels
                 RaisePropertyChanged(nameof(TypePartie18Trous));
             }
         }
+
+        /// <summary>
+        /// Vérifie si la sauvegarde peut être effectuée.
+        /// </summary>
+        private bool Peut_Sauvegarder() => Resultat.HasValue;
+
+        /// <summary>
+        /// Effectue la sauvegarde.
+        /// </summary>
+        //private void Sauvegarder() => _repoParties.Sauvegarder(
+        //    Trous.Where(trou => trou.NombreCoupsJoueur.HasValue).Select(trou => trou.NombreCoupsJoueur.Value).ToList(),
+        //    Trous.Select(trou => trou.Par).ToList(),
+        //    Resultat.Value);
+        private void Sauvegarder() { }
 
         #endregion Methods
     }
