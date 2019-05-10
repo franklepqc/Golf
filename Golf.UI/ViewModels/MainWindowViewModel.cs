@@ -189,7 +189,7 @@ namespace Golf.UI.ViewModels
         /// <summary>
         /// Effectue la sauvegarde.
         /// </summary>
-        private void Sauvegarder() => _repoParties.Sauvegarder(
+        private async void Sauvegarder() => await _repoParties.SauvegarderAsync(
             Trous.Where(trou => trou.NombreCoupsJoueur.HasValue).Select(trou => trou.NombreCoupsJoueur.Value).ToList(),
             Trous.Select(trou => trou.Par).ToList(),
             Resultat.Value);
