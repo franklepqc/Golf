@@ -1,6 +1,8 @@
 ﻿using Golf.Biz.Interfaces;
 using Golf.Biz.Persistance;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace Golf.Biz
@@ -36,7 +38,15 @@ namespace Golf.Biz
                 var partie = new Partie();
                 partie.Score = resultat;
                 _contexteGolf.Partie.Add(partie);
-                _contexteGolf.SaveChanges();
+
+                try
+                {
+                    _contexteGolf.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine(e.Message);
+                }
             });
     }
 }
